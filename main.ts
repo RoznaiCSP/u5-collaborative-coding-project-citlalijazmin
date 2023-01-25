@@ -1,5 +1,4 @@
 // Don't forget to comment your code as you work!
-effects.confetti.startScreenEffect()
 let mySprite = sprites.create(img`
     . . . . . . . . . b 5 b . . . . 
     . . . . . . . . . b 5 b . . . . 
@@ -45,3 +44,4 @@ let mySprite2 = sprites.create(img`
     ........................
     ........................
     `, SpriteKind.Player)
+effects.confetti.startScreenEffect()
