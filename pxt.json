@@ -2,8 +2,7 @@
     "name": "U5 Collaborative Coding Project",
     "description": "",
     "dependencies": {
-        "device": "*",
-        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3"
+        "device": "*"
     },
     "files": [
         "main.blocks",
