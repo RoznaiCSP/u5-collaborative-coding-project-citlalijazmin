@@ -1,32 +1,181 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
-info.player1.onLifeZero(function () {
-    game.setDialogTextColor(8)
-    game.setDialogFrame(img`
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
-        `)
-    if (!(false)) {
-    	
-    } else {
-    	
+controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
+    if (info.player2.hasLife()) {
+        dart2 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . 5 a a 7 . . . . . . . . . . . 
+            5 5 a 7 7 7 7 4 4 4 4 . . . . . 
+            . 5 a a 7 . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, player2, 200, 0)
     }
 })
-let mySprite: Sprite = null
+info.player3.onLifeZero(function () {
+    game.setDialogTextColor(1)
+    game.setDialogFrame(img`
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        `)
+    if (!(info.player1.hasLife()) && !(info.player2.hasLife())) {
+        game.showLongText("Player 3 Wins!", DialogLayout.Bottom)
+        game.over(true)
+    } else {
+        game.showLongText("Player 3 is out :-(", DialogLayout.Bottom)
+        player3.destroy()
+    }
+})
+controller.player1.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
+    if (info.player1.hasLife()) {
+        dart1 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . b . . . . . . . 
+            . . . . . . . b d b . . . . . . 
+            . . . . . . b 5 5 5 b . . . . . 
+            . . . . . b b 5 5 5 b b . . . . 
+            . . b b b b 5 5 5 1 1 b b b b . 
+            . . b 5 5 5 5 5 5 1 1 5 5 5 b . 
+            . . b d d 5 5 5 5 5 5 5 d d b . 
+            . . . b d d 5 5 5 5 5 d d b . . 
+            . . . c b 5 5 5 5 5 5 5 b c . . 
+            . . . c b 5 5 5 5 5 5 5 b c . . 
+            . . . c 5 5 d d b d d 5 5 c . . 
+            . . . c 5 d d c c c d d 5 c . . 
+            . . . c c c c . . . c c c c . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, player1, 200, 0)
+    }
+})
+info.player1.onLifeZero(function () {
+    game.setDialogTextColor(1)
+    game.setDialogFrame(img`
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        `)
+    if (!(info.player2.hasLife()) && !(info.player3.hasLife())) {
+        game.showLongText("Player 1 Wins!", DialogLayout.Bottom)
+        game.over(true)
+    } else {
+        game.showLongText("Player 1 is out :-(", DialogLayout.Bottom)
+        player1.destroy()
+    }
+})
+controller.player3.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
+    if (info.player3.hasLife()) {
+        dart3 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . 5 a a 8 . . . . . . . . . . . 
+            5 5 a 8 8 8 8 4 4 4 4 . . . . . 
+            . 5 a a 8 . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, player3, 200, 0)
+    }
+})
+info.player2.onLifeZero(function () {
+    game.setDialogTextColor(1)
+    game.setDialogFrame(img`
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f 
+        `)
+    if (!(info.player1.hasLife()) && !(info.player3.hasLife())) {
+        game.showLongText("Player 2 Wins!", DialogLayout.Bottom)
+        game.over(true)
+    } else {
+        game.showLongText("Player 2 is out :-(", DialogLayout.Bottom)
+        player2.destroy()
+    }
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (sprite == dart1) {
+        info.player1.changeScoreBy(1)
+    } else if (sprite == dart2) {
+        info.player2.changeScoreBy(1)
+    } else if (sprite == dart3) {
+        info.player3.changeScoreBy(1)
+    }
+    sprite.destroy()
+    otherSprite.destroy(effects.fire, 500)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (sprite == player1) {
+        info.player1.changeLifeBy(-1)
+        scene.cameraShake(4, 200)
+    } else if (sprite == player2) {
+        info.player2.changeLifeBy(-1)
+        scene.cameraShake(4, 200)
+    } else if (sprite == player3) {
+        info.player3.changeLifeBy(-1)
+        scene.cameraShake(4, 200)
+    }
+    otherSprite.destroy(effects.bubbles, 200)
+})
+let bogey: Sprite = null
+let dart3: Sprite = null
+let dart1: Sprite = null
+let dart2: Sprite = null
+let player3: Sprite = null
+let player2: Sprite = null
+let player1: Sprite = null
 scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b888886888888588888888888888b8888888888888
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b888886888888588888888888888b8888888888888
@@ -149,52 +298,99 @@ scene.setBackgroundImage(img`
     8888888888855555558888888888888888888888888888855855888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888558885588885888888
     8888888888885555588888888888885888888888888888858885888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888588855588888
     `)
-game.splash("Do you want to take up the challenge")
+game.splash("Do you want to take the challenge")
 story.showPlayerChoices("ACCEPT", "DECLINED")
 effects.starField.startScreenEffect()
-if (story.checkLastAnswer("ACCEPT")) {
-    mySprite = sprites.create(img`
-        . . . . . f f 4 4 f f . . . . . 
-        . . . . f 5 4 5 5 4 5 f . . . . 
-        . . . f e 4 5 5 5 5 4 e f . . . 
-        . . f b 3 e 4 4 4 4 e 3 b f . . 
-        . . f 3 3 3 3 3 3 3 3 3 3 f . . 
-        . f 3 3 e b 3 e e 3 b e 3 3 f . 
-        . f 3 3 f f e e e e f f 3 3 f . 
-        . f b b f b f e e f b f b b f . 
-        . f b b e 1 f 4 4 f 1 e b b f . 
-        f f b b f 4 4 4 4 4 4 f b b f f 
-        f b b f f f e e e e f f f b b f 
-        . f e e f b d d d d b f e e f . 
-        . . e 4 c d d d d d d c 4 e . . 
-        . . e f b d b d b d b b f e . . 
-        . . . f f 1 d 1 d 1 d f f . . . 
-        . . . . . f f b b f f . . . . . 
-        `, SpriteKind.Player)
-    mySprite.setPosition(20, 15)
-    mySprite.setStayInScreen(true)
-    controller.moveSprite(mySprite, 200, 200)
-    info.player1.setLife(4)
-    info.player1.setScore(0)
-}
-if (story.checkLastAnswer("DECLINED")) {
-    mySprite = sprites.create(img`
-        . . . . . f f 4 4 f f . . . . . 
-        . . . . f 5 4 5 5 4 5 f . . . . 
-        . . . f e 4 5 5 5 5 4 e f . . . 
-        . . f b 3 e 4 4 4 4 e 3 b f . . 
-        . . f 3 3 3 3 3 3 3 3 3 3 f . . 
-        . f 3 3 e b 3 e e 3 b e 3 3 f . 
-        . f 3 3 f f e e e e f f 3 3 f . 
-        . f b b f b f e e f b f b b f . 
-        . f b b e 1 f 4 4 f 1 e b b f . 
-        f f b b f 4 4 4 4 4 4 f b b f f 
-        f b b f f f e e e e f f f b b f 
-        . f e e f b d d d d b f e e f . 
-        . . e 4 c d d d d d d c 4 e . . 
-        . . e f b d b d b d b b f e . . 
-        . . . f f 1 d 1 d 1 d f f . . . 
-        . . . . . f f b b f f . . . . . 
-        `, SpriteKind.Player)
-    game.over(false, effects.starField)
-}
+player1 = sprites.create(img`
+    . . . . . . . f f . . . . . . . 
+    . . . . . f f 4 4 f f . . . . . 
+    . . . . f 5 4 5 5 4 5 f . . . . 
+    . . . f e 4 5 5 5 5 4 e f . . . 
+    . . f b 3 e 4 4 4 4 e 3 b f . . 
+    . f e 3 3 3 3 3 3 3 3 3 3 e f . 
+    . f 3 3 e b 3 e e 3 b e 3 3 f . 
+    . f b 3 f f e e e e f f 3 b f . 
+    f f b b f b f e e f b f b b f f 
+    f b b b e 1 f 4 4 f 1 e b b b f 
+    . f b b e e 4 4 4 4 4 f b b f . 
+    . . f 4 4 4 e d d d b f e f . . 
+    . . f e 4 4 e d d d d c 4 e . . 
+    . . . f e e d d b d b b f e . . 
+    . . . f f 1 d 1 d 1 1 f f . . . 
+    . . . . . f f f b b f . . . . . 
+    `, SpriteKind.Player)
+player1.setPosition(20, 45)
+player1.setFlag(SpriteFlag.StayInScreen, true)
+controller.player1.moveSprite(player1, 200, 200)
+info.player1.setLife(3)
+info.player1.setScore(0)
+player2 = sprites.create(img`
+    . . . . . . 5 . 5 . . . . . . . 
+    . . . . . f 5 5 5 f f . . . . . 
+    . . . . f 1 5 2 5 1 6 f . . . . 
+    . . . f 1 6 6 6 6 6 1 6 f . . . 
+    . . . f 6 6 f f f f 6 1 f . . . 
+    . . . f 6 f f d d f f 6 f . . . 
+    . . f 6 f d f d d f d f 6 f . . 
+    . . f 6 f d 3 d d 3 d f 6 f . . 
+    . . f 6 6 f d d d d f 6 6 f . . 
+    . f 6 6 f 3 f f f f 3 f 6 6 f . 
+    . . f f 3 3 5 3 3 5 3 d f f . . 
+    . . . f d f 3 5 5 3 f f d f . . 
+    . . . f d f 3 3 3 3 3 f f . . . 
+    . . . f f 3 5 3 3 5 3 3 f . . . 
+    . . . . f f f f f f f f f . . . 
+    . . . . . . . . . f f . . . . . 
+    `, SpriteKind.Player)
+player2.setPosition(20, 75)
+player2.setFlag(SpriteFlag.StayInScreen, true)
+controller.player2.moveSprite(player2, 200, 200)
+info.player2.setLife(3)
+info.player2.setScore(0)
+player3 = sprites.create(img`
+    . . . . . . f f f f . . . . . . 
+    . . . . f f f 2 2 f f f . . . . 
+    . . . f f f 2 2 2 2 f f f . . . 
+    . . f f f e e e e e e f f f . . 
+    . . f f e 2 2 2 2 2 2 e e f . . 
+    . . f e 2 f f f f f f 2 e f . . 
+    . . f f f f e e e e f f f f . . 
+    . f f e f b f 4 4 f b f e f f . 
+    . f e e 4 1 f d d f 1 4 e e f . 
+    . . f e e d d d d d d e e f . . 
+    . . . f e e 4 4 4 4 e e f . . . 
+    . . e 4 f 2 2 2 2 2 2 f 4 e . . 
+    . . 4 d f 2 2 2 2 2 2 f d 4 . . 
+    . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
+    . . . . . f f f f f f . . . . . 
+    . . . . . f f . . f f . . . . . 
+    `, SpriteKind.Player)
+player3.setPosition(20, 105)
+player3.setFlag(SpriteFlag.StayInScreen, true)
+controller.player3.moveSprite(player3, 200, 200)
+info.player3.setLife(3)
+info.player3.setScore(0)
+game.onUpdateInterval(500, function () {
+    if (true) {
+        bogey = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . f f f f f f f . . . . 
+            . . . . f 1 1 1 1 1 1 1 f . . . 
+            . . . . f 1 1 1 1 1 1 f . . . . 
+            . . . f 1 1 1 1 1 1 f . . . . . 
+            . . . f 1 1 1 1 1 f . . . . . . 
+            . . f 1 1 1 1 1 f f f . . . . . 
+            . . f 1 1 1 1 1 1 1 1 f . . . . 
+            . f 1 1 1 1 1 1 1 1 f . . . . . 
+            . . f f f f 1 1 1 f . . . . . . 
+            . . . . f 1 1 1 f . . . . . . . 
+            . . . . f 1 1 f . . . . . . . . 
+            . . . f 1 1 f . . . . . . . . . 
+            . . . f 1 f . . . . . . . . . . 
+            . . . . f . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Enemy)
+        bogey.setVelocity(-50, 0)
+        bogey.setPosition(180, randint(0, 120))
+    }
+})
