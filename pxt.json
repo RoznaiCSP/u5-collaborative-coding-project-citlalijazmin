@@ -1,8 +1,11 @@
 {
-    "name": "U5 Collaborative Coding Project",
+    "name": "U5 Collaborative Coding Project - Copy",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.1",
+        "darts": "*"
     },
     "files": [
         "main.blocks",
