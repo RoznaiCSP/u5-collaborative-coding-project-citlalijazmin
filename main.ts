@@ -27,7 +27,6 @@ info.player3.onLifeZero(function () {
         game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 3 is out :-(", DialogLayout.Bottom)
-        game.over(false, effects.starField)
         player3.destroy()
     }
 })
@@ -77,7 +76,6 @@ info.player1.onLifeZero(function () {
         game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 1 is out :-(", DialogLayout.Bottom)
-        game.over(false, effects.starField)
         player1.destroy()
     }
 })
@@ -127,7 +125,6 @@ info.player2.onLifeZero(function () {
         game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 2 is out :-(", DialogLayout.Bottom)
-        game.over(false, effects.starField)
         player2.destroy()
     }
 })
