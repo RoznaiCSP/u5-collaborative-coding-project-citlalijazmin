@@ -24,9 +24,10 @@ info.player3.onLifeZero(function () {
         `)
     if (!(info.player1.hasLife()) && !(info.player2.hasLife())) {
         game.showLongText("Player 3 Wins!", DialogLayout.Bottom)
-        game.over(true)
+        game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 3 is out :-(", DialogLayout.Bottom)
+        game.over(false, effects.starField)
         player3.destroy()
     }
 })
@@ -73,9 +74,10 @@ info.player1.onLifeZero(function () {
         `)
     if (!(info.player2.hasLife()) && !(info.player3.hasLife())) {
         game.showLongText("Player 1 Wins!", DialogLayout.Bottom)
-        game.over(true)
+        game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 1 is out :-(", DialogLayout.Bottom)
+        game.over(false, effects.starField)
         player1.destroy()
     }
 })
@@ -122,21 +124,19 @@ info.player2.onLifeZero(function () {
         `)
     if (!(info.player1.hasLife()) && !(info.player3.hasLife())) {
         game.showLongText("Player 2 Wins!", DialogLayout.Bottom)
-        game.over(true)
+        game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 2 is out :-(", DialogLayout.Bottom)
+        game.over(false, effects.starField)
         player2.destroy()
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    let dart3: Sprite = null
-    let dart2: Sprite = null
-    let dart1: Sprite = null
-    if (sprite == dart1) {
+    if (sprite == stellaStar) {
         info.player1.changeScoreBy(1)
-    } else if (sprite == dart2) {
+    } else if (sprite == rose) {
         info.player2.changeScoreBy(1)
-    } else if (sprite == dart3) {
+    } else if (sprite == wise) {
         info.player3.changeScoreBy(1)
     }
     sprite.destroy()
@@ -155,7 +155,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
     otherSprite.destroy(effects.bubbles, 200)
 })
-let bogey: Sprite = null
+let toniturusBolts: Sprite = null
 let wise: Sprite = null
 let stellaStar: Sprite = null
 let rose: Sprite = null
@@ -311,7 +311,7 @@ if (story.checkLastAnswer("ACCEPT")) {
 }
 game.onUpdateInterval(500, function () {
     if (true) {
-        bogey = sprites.create(img`
+        toniturusBolts = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . f f f f f f f . . . . 
             . . . . f 1 1 1 1 1 1 1 f . . . 
@@ -329,7 +329,7 @@ game.onUpdateInterval(500, function () {
             . . . . f . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Enemy)
-        bogey.setVelocity(-50, 0)
-        bogey.setPosition(180, randint(0, 120))
+        toniturusBolts.setVelocity(-50, 0)
+        toniturusBolts.setPosition(180, randint(0, 120))
     }
 })
