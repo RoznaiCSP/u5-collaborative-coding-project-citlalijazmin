@@ -20,20 +20,32 @@ controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Press
             `, player2, 200, 0)
     }
 })
+// Function with parameters 
+// 
+function greet (firstname: string) {
+    console.log(firstname)
+    game.splash("Welcome traveler")
+}
+// Function with return value 
+function aName (name: string) {
+    return name
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherSprite) {
     game.splash("Hello  " + Name)
     pause(500)
     story.clearAllText()
+    // Selection
     game.showLongText("Would you like to go on a quest?", DialogLayout.Bottom)
     pause(500)
     story.clearAllText()
     story.showPlayerChoices("ACCEPT", "DECLINE")
+    // Iteration
     if (story.checkLastAnswer("ACCEPT")) {
         game.showLongText("Are you sure", DialogLayout.Bottom)
         story.showPlayerChoices("YES", "NO")
         pause(500)
         story.clearAllText()
-        effects.clearParticles(player1)
+        effects.clearParticles(traveler)
         effects.clearParticles(Yor)
         pause(500)
         story.clearAllText()
@@ -43,7 +55,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherS
         sprites.destroyAllSpritesOfKind(SpriteKind.Player)
         tiles.setCurrentTilemap(tilemap`level2`)
         effects.starField.startScreenEffect(500)
-        player1 = sprites.create(img`
+        traveler = sprites.create(img`
             ................................
             ................................
             ........fffffffffffff...........
@@ -77,9 +89,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Player, function (sprite, otherS
             ................................
             ................................
             `, SpriteKind.Player)
-        player1.setPosition(20, 45)
-        player1.setFlag(SpriteFlag.StayInScreen, true)
-        controller.player1.moveSprite(player1, 200, 200)
+        traveler.setPosition(20, 45)
+        traveler.setFlag(SpriteFlag.StayInScreen, true)
+        controller.player1.moveSprite(travelr, 200, 200)
         info.player1.setLife(4)
         info.player1.setScore(0)
         player2 = sprites.create(img`
@@ -149,7 +161,7 @@ info.player1.onLifeZero(function () {
         game.over(true, effects.confetti)
     } else {
         game.showLongText("Player 1 is out :-(", DialogLayout.Bottom)
-        player1.destroy()
+        traveler.destroy()
     }
 })
 info.player2.onLifeZero(function () {
@@ -171,6 +183,7 @@ info.player2.onLifeZero(function () {
         f f f f f f f f f f f f f f f 
         f f f f f f f f f f f f f f f 
         `)
+    // Conditional Statements
     if (!(info.player2.hasLife())) {
         game.showLongText("Player 2 Wins!", DialogLayout.Bottom)
         game.over(true, effects.confetti)
@@ -198,7 +211,7 @@ controller.player1.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Press
             . . . c c c c . . . c c c c . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            `, player1, 200, 0)
+            `, travelr, 200, 0)
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -210,12 +223,17 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     lightningBolts.destroy(effects.bubbles, 500)
 })
 let lightningBolts: Sprite = null
-let player1: Sprite = null
+let travelr: Sprite = null
+let traveler: Sprite = null
 let player2: Sprite = null
 let stellaStar: Sprite = null
 let Yor: Sprite = null
 let Name = ""
+// User input
 Name = game.askForString("Name your character")
+// User output
+greet("Hello")
+let mySprite = aName("traveler")
 tiles.setCurrentTilemap(tilemap`level1`)
 let Anya = sprites.create(img`
     ......fffffffffffff..........
@@ -290,6 +308,7 @@ tiles.placeOnTile(Yor, tiles.getTileLocation(1, 3))
 scene.cameraFollowSprite(Anya)
 controller.moveSprite(Anya)
 game.onUpdateInterval(500, function () {
+    // Boolean Operators
     if (story.checkLastAnswer("YES")) {
         lightningBolts = sprites.create(img`
             . . . . . . . . . . . . . . . . 
